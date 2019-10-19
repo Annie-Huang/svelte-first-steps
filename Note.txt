@@ -1,0 +1,10 @@
+https://www.youtube.com/watch?v=LIfIRdRlD58
+https://github.com/Annie-Huang/svelte-first-steps
+
+================================================================
+
+C:\react>npx degit sveltejs/template svelte-first-steps
+C:\react\svelte-first-steps>npm i
+
+
+
