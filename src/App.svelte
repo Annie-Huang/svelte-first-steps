@@ -24,6 +24,16 @@
         // products.push(newProduct);
         products = products.concat(newProduct);
     }
+
+    function addToCart(event) {
+        const selectedTitle = event.detail;
+        // It's better if we create a copy of that so that we rule out that we ever mutated this indirectly
+        // because such mutations wouldn't be picked up by svelte.
+        cartItems = cartItems.concat({
+            ...products.find(prod => prod.title === selectedTitle)
+        });
+        console.log('cartItems=', cartItems);
+    }
 </script>
 
 <style>
@@ -66,7 +76,8 @@
             <Product
                     productTitle={product.title}
                     productPrice={product.price}
-                    productDescription={product.description}/>
+                    productDescription={product.description}
+                    on:addcart={addToCart} />
         {/each}
     {/if}
 </section>
