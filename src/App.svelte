@@ -1,12 +1,24 @@
 <script>
     import Product from "./Product.svelte";
+    import Button from './Button.svelte';
 
     let title = '';
     let price = 0;
     let description = '';
 
+    let products = [];
+
     function setTitle(event) {
         title = event.target.value;
+    }
+    
+    function createProduct() {
+        const newProduct = {
+            title,
+            price,
+            description
+        };
+        products.push(newProduct);
     }
 </script>
 
@@ -37,6 +49,8 @@
         <label for="description">Description</label>
         <textarea rows="3" id="description" bind:value={description}></textarea>
     </div>
+
+    <Button on:click={createProduct}>Create Product</Button>
 </section>
 
 <Product productTitle={title} productPrice={price} productDescription={description} />
