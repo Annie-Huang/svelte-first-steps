@@ -18,7 +18,10 @@
             price,
             description
         };
-        products.push(newProduct);
+        // This will not work. push add more value into the array but the array points 'products' still pointing to the same memory location.
+        // What we need to do is to assign a new value to product. This will trigger an update by svelte.
+        // products.push(newProduct);
+        products = products.concat(newProduct);
     }
 </script>
 
@@ -53,4 +56,14 @@
     <Button on:click={createProduct}>Create Product</Button>
 </section>
 
-<Product productTitle={title} productPrice={price} productDescription={description} />
+<!--{@debug products}-->
+{#if products.length === 0}
+    <p>No products were added yet!</p>
+    {:else}
+    {#each products as product}
+        <Product
+                productTitle={product.title}
+                productPrice={product.price}
+                productDescription={product.description} />
+    {/each}
+{/if}
