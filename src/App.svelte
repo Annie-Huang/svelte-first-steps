@@ -7,11 +7,12 @@
     let description = '';
 
     let products = [];
+    let cartItems = [];
 
     function setTitle(event) {
         title = event.target.value;
     }
-    
+
     function createProduct() {
         const newProduct = {
             title,
@@ -56,14 +57,16 @@
     <Button on:click={createProduct}>Create Product</Button>
 </section>
 
-<!--{@debug products}-->
-{#if products.length === 0}
-    <p>No products were added yet!</p>
+<section>
+    <!--{@debug products}-->
+    {#if products.length === 0}
+        <p>No products were added yet!</p>
     {:else}
-    {#each products as product}
-        <Product
-                productTitle={product.title}
-                productPrice={product.price}
-                productDescription={product.description} />
-    {/each}
-{/if}
+        {#each products as product}
+            <Product
+                    productTitle={product.title}
+                    productPrice={product.price}
+                    productDescription={product.description}/>
+        {/each}
+    {/if}
+</section>
