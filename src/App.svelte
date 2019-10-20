@@ -1,6 +1,7 @@
 <script>
     import Product from "./Product.svelte";
     import Button from './Button.svelte';
+    import Cart from './Cart.svelte';
 
     let title = '';
     let price = 0;
@@ -47,8 +48,13 @@
     }
 </style>
 
-<!-- Can do on:click, on:blur, on:input        -->
+<section>
+    <Cart items={cartItems}></Cart>
+</section>
 
+<hr/>
+
+<!-- Can do on:click, on:blur, on:input        -->
 <p>{title}</p>
 <section>
     <div>
